@@ -99,3 +99,66 @@ square();
     const nums = stringNumbers.map(Number);// here NUmber is a constructor function
 
     console.log(nums);
+
+
+    //filter method
+
+    const arr1 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+    const even = arr1.filter(evenNum)
+
+    function evenNum(value){
+        return value % 2 === 0;
+    }
+
+    console.log(even);
+
+    //
+
+    const people = [
+        {
+            name: 'John',
+            age: 25
+        }, 
+        {
+            name: 'Mary',
+            age: 30
+        }, 
+        {
+            name: 'Peter',
+            age: 15
+        }
+    ];
+
+    const adults = people.filter(person => person.age >= 18);
+
+    console.log(adults);
+
+    //remove duplicates
+
+    const numberH = [1, 2, 3, 4, 2, 8, 7, 8, 9, 7];
+
+    const numberH2 = numberH.filter((value, index, arr)=>{
+            return arr.indexOf(value) === index;
+    });
+
+    console.log(numberH2);
+
+
+    //reduce method
+
+    const arr3 = [1, 2, 3, 4, 5, 11, 7, 8, 9, 10];
+
+    const max = arr3.reduce(callback, -Infinity)   // calback function and initial value
+
+    function callback(accumulator, value){
+        if(accumulator > value)
+        {
+            return accumulator;
+        }else {
+            return value;
+        }
+    }
+
+    console.log(max);
+
