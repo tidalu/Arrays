@@ -207,3 +207,114 @@ const participants = ['ala', 'hhh', 'wded', 'wwdw', 'wdwdwe']
 
 const winners = participants.slice(0, 3);
 console.log(winners);
+
+
+// splice method
+
+const arr4 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+const removed = arr4.splice(2, 3, 5, 6, 7);  // first one is the initial index to remove second is count// after initiator and count there we can write any numbers() to replace the deleted idems with what we want, 
+//for count we can write 0 not to remove anything but to add only
+console.log(removed); // it gives me deleted items, so i do have only threee eleements
+
+
+// sort method
+
+const names = ['florin', 'liam', 'jai', 'ivan']
+
+names.sort()
+
+console.log(names);
+
+const sortNum = [ 24, 23, 5, 7, 90, 34, 76, 100]
+
+sortNum.sort(compare)
+
+console.log(sortNum);  
+
+function compare(a, b){
+    // < 0 ... a
+    // =0  ... nothing will be changed
+    // > 0 ... b
+    return a - b;
+}
+
+
+// array object are above
+
+
+maga.sort((a, b) => {
+    return a.price - b.price
+})
+
+console.log(maga);
+
+// concat
+
+const a = [1, 2]
+const b = [3, 4]
+const d = [5, 6]
+
+const c = a.concat(b, d) /// if we give no parametr it will copy
+const c2 = a.concat(1, 3)
+const c3 = a.concat() //to copy
+console.log(c)
+console.log(c2)
+console.log(c3)
+
+
+// fill method
+const fillMethod = [ 1, 2, 3, 4, 5, 6]
+
+fillMethod.fill(0)
+fillMethod.fill(0,1,4) // it fills between 1 and 4 indexes
+
+console.log(fillMethod)
+
+function fillInNum (n){
+    return Array(n).fill().map((_, index)=>index+1)
+}
+
+console.log(fillInNum(100));
+///
+
+
+
+/// includes method
+
+const res = names.includes('ivanushka')
+console.log(res);
+
+const fruits = ['apple', 'banana', 'orange']
+const res1 = fruits.includes('banana')
+if(res1)
+{
+    console.log('yuppy')
+}else{
+    console.log('sad')
+}
+
+
+// join method
+
+const countries = ['usa', 'india', 'china']
+const join = countries.join(', ')
+console.log(join)
+
+console.log('I want to visit to ' + join)
+
+//
+
+// reverse method
+
+const arr5 = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+arr5.reverse()
+const newArr = [...arr5].reverse()
+console.log(arr5)
+console.log(newArr)
+
+
+const string1 = 'Coding is fun!'
+const string2 = string1.split('').reverse().join('')
+console.log(string2)
