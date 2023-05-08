@@ -139,8 +139,8 @@ console.log(isSubset([1, 2, 3, 4, 5, 6, 7], [5, 8, 7])); // false
 
 // 
 
-console.log([1, , 3].every((x) => x !== undefined)); // true
-console.log([2, , 2].every((x) => x === 2)); // true
+console.log([1, , 3].every((x) => x !== undefined)); // true //every command skip the empty slot
+console.log([2, , 2].every((x) => x === 2)); // true //like here it is skipping and saying there all are 2
 
 /////
 
@@ -209,3 +209,121 @@ console.log(
 ); // true
 
 
+/// /////////////////////////
+// ======================////
+//== CopyWithin() method ==//
+// ======================////
+/////////////////////////////
+
+// it shalloow copies part of the array to another location in the same array and returns it without modifying its length
+
+//syntax
+
+// array.copyWithin(target, start, end)
+
+const cpy = [1, 2, 3, 4, 5];
+
+cpy.copyWithin(0, 3);
+console.log(cpy);
+
+
+const cpy1 = ['apple', 'orange',  'cherry', 'date'];
+cpy1.copyWithin(1, 2, 4);
+// a c d b c d 
+console.log(cpy1);
+
+const let1 = ['a', 'b', 'c', 'd', 'e', 'f', 'g'];
+
+let1.copyWithin(3, 1, 4);
+// a b c  b c d  g 
+
+
+// 
+const cpy3 = [1, 2, 3, 4, 5];
+
+cpy3.copyWithin(2, 0, 2);
+console.log(cpy3);
+// 1, 2, 1,2, 5,
+
+//
+
+const cpy4 = ['a', 'b', 'c', 'd', 'e'];
+
+cpy4.copyWithin(1, 3, 4) 
+console.log(cpy4);
+// a, d, c, d, e
+
+
+///
+const cols = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet'];
+cols.copyWithin(2, 4);
+console.log(cols);
+
+// 'red', 'orange', 'blue', 'indigo',  'blue', 'indigo', 'violet'
+
+//
+const prices = [10, 20, 30, 40, 50];
+
+prices.copyWithin(0, 3, 4);
+
+console.log(prices);
+
+// 40, 20, 30, 40, 50
+
+/// mdn syntax
+// copyWithin(target)
+// copyWithin(target, start)
+// copyWithin(target, start, end)
+
+
+// 
+console.log([1, 2, 3, 4, 5].copyWithin(-2));
+// 1, 2, 3, 1, 2, 
+
+
+//
+console.log([1, 2, 3, 4, 5].copyWithin(-2, -3 ,-1));
+//  1 2 3 3 4  
+
+// it cares about empty slot
+
+console.log([1, , 3].copyWithin(2, 1, 2));
+
+// calling copyWithin() method ON NON-array objects
+
+const arrayLike1 = {
+    length: 5,
+    3: 1,
+
+};
+
+console.log(Array.prototype.copyWithin.call(arrayLike1, 0, 3));
+
+
+
+/// /////////////////////////
+// ======================////
+//==  entries() method   ==//
+// ======================////
+/////////////////////////////
+
+
+// SYNTAX
+// array.entries()
+
+const ent1 = ['apple', 'banana', 'orange'];
+const entries = ent1.entries();
+
+console.log(entries.next(2).value);
+console.log(entries.next().value);
+console.log(entries.next().value);
+
+
+//
+const colors1 = ['red', 'green', 'blue'];
+
+for(let [index, value] of colors1.entries()) {
+    console.log(`The value of element ${index} is ${value}`);
+}
+
+//
