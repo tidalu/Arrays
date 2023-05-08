@@ -1,4 +1,8 @@
-// concat method
+/// /////////////////////////
+// ======================////
+//==  concat() method    ==//
+// ======================////
+/////////////////////////////
 
 const arr1 = [1, 2, 3]
 const arr2 = [4, 5, 6]
@@ -55,6 +59,11 @@ const url = `https://example.com?${queryString}`;
 console.log(url);
 
 console.log(queryString);
+/// /////////////////////////
+// ======================////
+//==   every() method    ==//
+// ======================////
+/////////////////////////////
 
 //////////////////////////////////////////////////////////////////////
 // every() method
@@ -326,4 +335,126 @@ for(let [index, value] of colors1.entries()) {
     console.log(`The value of element ${index} is ${value}`);
 }
 
+
 //
+
+
+const ent2 = [1, 2, 3, 4, 5];
+
+const filteredEntries = Array.from( ent2.entries()).filter(([index, value]) => value % 2 === 0);
+
+console.log(filteredEntries);
+console.log(filteredEntries);
+
+
+//
+const a = ['a', 'b', 'c'];
+
+for(const [index, value] of a.entries()) {
+    console.log(`The value of element ${index} is ${value}`);
+}
+
+const arrEnt = a.entries();
+
+for(const element of arrEnt) {
+    console.log(element);
+}
+
+// entries() will visit empty slots as if they are undefined
+
+for(const element of [, 'a'].entries()){
+    console.log(element);
+}
+
+// calling entries on non-array objects
+
+// the entries() method reads the length property of this and then accesses each integer index
+
+
+const arrLike = {
+    length: 3,
+    0: 'a',
+    1: 'b',
+    2: 'c',
+}
+
+for( const entry of Array.prototype.entries.call(arrLike)) {
+    console.log(entry);
+}
+
+
+
+/// /////////////////////////
+// ======================////
+//==   fill() method     ==//
+// ======================////
+/////////////////////////////
+
+// Syntax 
+// array.fill(value[, start[, end]]) // index end is not included
+// array.fill(value)
+//array.fill(value, start, end)
+//array.fill(value, start)
+// start(default 0)
+
+const fill = new Array(5);
+fill.fill(1);
+console.log(fill);
+
+// fillling the part of the array with single value
+
+const fill1 = [1, 2, 3, 4, 5];
+
+fill1.fill(0, 2, 4);
+console.log(fill1);
+
+/// filling the array with different value
+
+const fill2 = new Array(5);
+fill2.fill(0, 0, 2);
+fill2.fill(1, 2);
+console.log(fill2);
+
+// fill an array with objects
+
+const fill3 = new Array(3);
+const obj = {name: 'john', age: 30};
+fill3.fill(obj);
+console.log(fill3);
+
+// simple from mdn
+
+console.log([1,2,3,4].fill(0, 2, 4));
+console.log([1,2,3,4].fill(5, 1));
+console.log([1,2,3,4].fill(6));
+
+
+// using fill 
+
+console.log([1, 2, 3].fill(4)); // [4, 4, 4]
+console.log([1, 2, 3].fill(4, 1)); // [1, 4, 4]
+console.log([1, 2, 3].fill(4, 1, 2)); // [1, 4, 3]
+console.log([1, 2, 3].fill(4, 1, 1)); // [1, 2, 3] exit is not included so it is not filling anything
+console.log([1, 2, 3].fill(4, 3, 3)); // [1, 2, 3] this is also the same 
+console.log([1, 2, 3].fill(4, -3, -2)); // [4, 2, 3]   
+console.log([1, 2, 3].fill(4, NaN, NaN)); // [1, 2, 3] as you see here if it is empty it is out of scope so it is not filing anything
+console.log([1, 2, 3].fill(4, 3, 5)); // [1, 2, 3] fill gives the same length so it is not filling anything
+console.log(Array(3).fill(4)); // [4, 4, 4] 
+
+// object
+const fill4 = Array(3).fill({});
+fill4[0].hi = 'Hello';
+console.log(fill4);
+
+
+// using fill to create a matrix of all 1
+
+const fill5 = new Array(3);
+for( let i = 0; i < fill5.length; i++){
+    fill5[i] = new Array(4).fill(1);
+
+}
+fill5[0][0] = 1;
+console.log(fill5[1][0]);
+console.log(fill5[2][0]);
+console.log(fill5);
