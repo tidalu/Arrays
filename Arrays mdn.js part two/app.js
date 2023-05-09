@@ -320,3 +320,42 @@ console.log(sPlainObj);
 //==   unshift() method  ==//
 // ======================////
 /////////////////////////////
+
+// adds the specified elements to the beginning of an array and returns the new length of the array.
+
+// syntax
+// array.unshift();
+// array.unshift(element0);
+// array.unshift(element1, element2, ..., elementN);
+
+let uarr = [1, 2, 3, 4, 5];
+uarr.unshift(6, 7, 8, 9, 10);
+console.log(uarr);
+
+uarr = [1, 2, 3, 4, 5];
+
+uarr.unshift(1);
+uarr.unshift(2);
+uarr.unshift(3);
+
+console.log(uarr);
+
+uarr.unshift([-7, -6], [-5]);
+console.log(uarr);
+
+// calling unshift() on an non-array objects
+
+const UArrayLike = {
+    length: 3,
+    unrelated: "foo",
+    2: 4
+};
+
+Array.prototype.unshift.call(UArrayLike, 1, 2);
+console.log(UArrayLike);
+
+
+const uplainObj = {};
+
+Array.prototype.unshift.call(uplainObj, 1, 2);
+console.log(uplainObj);
