@@ -1,0 +1,8 @@
+list of method on this part one:
+1. concat() method
+2. every() method
+3. copyWithin() method
+4. fill() method4
+5. every() method
+6. some() method
+7. valueOf() method

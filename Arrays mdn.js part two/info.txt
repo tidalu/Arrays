@@ -1,0 +1,7 @@
+list of method on this part one:
+1. toString() method
+2. join() method
+3. pop() method
+4. push() method4
+5. shift() method
+6. unshift() method

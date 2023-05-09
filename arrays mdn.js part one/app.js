@@ -630,4 +630,4 @@ console.log(myerr);
 // the valueOf() does not change the original array
 
 
-
+// part one is finished here
