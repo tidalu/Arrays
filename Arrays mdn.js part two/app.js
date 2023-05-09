@@ -107,6 +107,9 @@ console.log(Array.prototype.join.call(jarrLike, '-'));
 //==    pop()  method    ==//
 // ======================////
 /////////////////////////////
+
+// syntax
+// array.pop();
 // deletes the last element of the array
 
 const parr = [1, 2, 3, 4, 5];
@@ -175,3 +178,145 @@ collection.addElements(10, 20, 30);
 console.log(collection.length); // 3
 collection.removeElements();
 console.log(collection.length); // 2
+
+
+/// /////////////////////////
+// ======================////
+//==    push() method    ==//
+// ======================////
+/////////////////////////////
+
+// allows to add elements to the end of an array
+// syntax 
+// array.push(element1, element2, ..., elementN)
+
+let pfrr = ['apple', 'banana', 'orange'];
+let newLength = pfrr.push('pear', 'mango');
+
+console.log(pfrr);
+console.log(newLength);
+
+
+// 
+
+let pnumbers = [1, 2, 3, 4, 5];
+pnumbers.push(6, 7, 8, 9, 10);
+
+console.log(pnumbers);
+
+//
+
+let pemptyArray = [];
+pemptyArray.push(1, 2, 3, 4, 5);
+
+console.log(pemptyArray);
+
+//mdn
+
+const vegetables = ["parsnip", "potato"];
+const moreVegs = ["celery", "beetroot"];
+
+// Merge the second array into the first one
+vegetables.push(...moreVegs);
+
+console.log(vegetables); // ['parsnip', 'potato', 'celery', 'beetroot']
+
+
+// calling push() on an non-array objects
+
+const arrLIkep = {
+    length: 3,
+    unrelated: "foo",
+    2: 4
+};
+
+Array.prototype.push.call(arrLIkep, 1, 2);
+console.log(arrLIkep);
+
+const plainObject = {};
+Array.prototype.push.call(plainObject, 1, 2);
+console.log(plainObject);
+
+// using an object in an array-like fashion
+
+const pobj = {
+    length: 0,
+
+    addEl(elem) {
+        // obj.length will be incremented automatically
+        // every time an element is added.
+        [].push.call(this, elem);
+    }, 
+};
+
+// let's add some empty objects just to illustrate
+
+pobj.addEl({});
+pobj.addEl({});
+pobj.addEl({});
+pobj.addEl({});
+console.log(pobj.length);
+
+
+/// /////////////////////////
+// ======================////
+//==    shift() method   ==//
+// ======================////
+/////////////////////////////
+
+// removes the first from array
+
+// syntax
+// array.shift();
+
+const sarr = [1, 2, 3, 4, 5];
+const first = sarr.shift();
+console.log(first);
+console.log(sarr);
+
+//remove an elment from an array
+
+const smyFish = ["angel", "clown", "mandarin", "sturgeon"];
+
+console.log("My fish before: ", JSON.stringify(smyFish));
+
+const shifted = smyFish.shift();
+
+console.log("My fish after: ", JSON.stringify(smyFish));
+
+console.log("removed first element: ", shifted);
+
+
+// using shift() method on a while loop
+
+const snames = ["angel", "clown", "mandarin", "sturgeon"];
+
+while(typeof (i = snames.shift()) !== 'undefined') {
+    console.log(i);
+}
+
+// calling shift() on non-array objects
+
+const sArrLike = {
+    length: 3,
+    unrelated: "foo",
+    2: 4
+};
+
+console.log(Array.prototype.shift.call(sArrLike));
+// undefined, because it is an empty slot
+console.log(sArrLike);
+
+
+const sPlainObj = {};
+Array.prototype.shift.call(sPlainObj);
+console.log(sPlainObj);
+
+
+
+
+/// /////////////////////////
+// ======================////
+//==   unshift() method  ==//
+// ======================////
+/////////////////////////////
