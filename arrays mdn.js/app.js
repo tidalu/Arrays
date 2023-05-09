@@ -236,7 +236,7 @@ cpy.copyWithin(0, 3);
 console.log(cpy);
 
 
-const cpy1 = ['apple', 'orange',  'cherry', 'date'];
+const cpy1 = ['apple', 'orange', 'cherry', 'date'];
 cpy1.copyWithin(1, 2, 4);
 // a c d b c d 
 console.log(cpy1);
@@ -258,7 +258,7 @@ console.log(cpy3);
 
 const cpy4 = ['a', 'b', 'c', 'd', 'e'];
 
-cpy4.copyWithin(1, 3, 4) 
+cpy4.copyWithin(1, 3, 4)
 console.log(cpy4);
 // a, d, c, d, e
 
@@ -291,7 +291,7 @@ console.log([1, 2, 3, 4, 5].copyWithin(-2));
 
 
 //
-console.log([1, 2, 3, 4, 5].copyWithin(-2, -3 ,-1));
+console.log([1, 2, 3, 4, 5].copyWithin(-2, -3, -1));
 //  1 2 3 3 4  
 
 // it cares about empty slot
@@ -331,7 +331,7 @@ console.log(entries.next().value);
 //
 const colors1 = ['red', 'green', 'blue'];
 
-for(let [index, value] of colors1.entries()) {
+for (let [index, value] of colors1.entries()) {
     console.log(`The value of element ${index} is ${value}`);
 }
 
@@ -341,7 +341,7 @@ for(let [index, value] of colors1.entries()) {
 
 const ent2 = [1, 2, 3, 4, 5];
 
-const filteredEntries = Array.from( ent2.entries()).filter(([index, value]) => value % 2 === 0);
+const filteredEntries = Array.from(ent2.entries()).filter(([index, value]) => value % 2 === 0);
 
 console.log(filteredEntries);
 console.log(filteredEntries);
@@ -350,19 +350,19 @@ console.log(filteredEntries);
 //
 const a = ['a', 'b', 'c'];
 
-for(const [index, value] of a.entries()) {
+for (const [index, value] of a.entries()) {
     console.log(`The value of element ${index} is ${value}`);
 }
 
 const arrEnt = a.entries();
 
-for(const element of arrEnt) {
+for (const element of arrEnt) {
     console.log(element);
 }
 
 // entries() will visit empty slots as if they are undefined
 
-for(const element of [, 'a'].entries()){
+for (const element of [, 'a'].entries()) {
     console.log(element);
 }
 
@@ -378,7 +378,7 @@ const arrLike = {
     2: 'c',
 }
 
-for( const entry of Array.prototype.entries.call(arrLike)) {
+for (const entry of Array.prototype.entries.call(arrLike)) {
     console.log(entry);
 }
 
@@ -418,15 +418,15 @@ console.log(fill2);
 // fill an array with objects
 
 const fill3 = new Array(3);
-const obj = {name: 'john', age: 30};
+const obj = { name: 'john', age: 30 };
 fill3.fill(obj);
 console.log(fill3);
 
 // simple from mdn
 
-console.log([1,2,3,4].fill(0, 2, 4));
-console.log([1,2,3,4].fill(5, 1));
-console.log([1,2,3,4].fill(6));
+console.log([1, 2, 3, 4].fill(0, 2, 4));
+console.log([1, 2, 3, 4].fill(5, 1));
+console.log([1, 2, 3, 4].fill(6));
 
 
 // using fill 
@@ -450,7 +450,7 @@ console.log(fill4);
 // using fill to create a matrix of all 1
 
 const fill5 = new Array(3);
-for( let i = 0; i < fill5.length; i++){
+for (let i = 0; i < fill5.length; i++) {
     fill5[i] = new Array(4).fill(1);
 
 }
@@ -458,3 +458,134 @@ fill5[0][0] = 1;
 console.log(fill5[1][0]);
 console.log(fill5[2][0]);
 console.log(fill5);
+
+// using fill to populate an empty rray
+
+const tempGirls = Array(5).fill('girl', 0);
+console.log(tempGirls);
+
+// calling fill on non array objects
+
+const arrLLIK = {
+    length: 3
+};
+console.log(Array.prototype.fill.call(arrLLIK, 1));
+
+
+/// /////////////////////////
+// ======================////
+//==   some() method     ==//
+// ======================////
+/////////////////////////////
+
+// syntax
+// array.some(callback)
+// array.some(callback(element, index, array), thisArg);
+
+const array = [1, 2, 3, 4, 5];
+const hasThree = array.some(element => element === 3);
+console.log(hasThree);
+
+
+
+//
+
+const people = [
+    {
+        name: 'john',
+        age: 30
+    },
+    {
+        name: 'jane',
+        age: 20
+    },
+    {
+        name: 'joe',
+        age: 40
+    }
+];
+
+const isAdult = people.some(person => person.age >= 18);
+console.log(isAdult);
+
+//
+
+const obj1 ={
+    value: 5,
+    checkIfGreaterThan: function(element){
+        return element > this.value;
+    }
+};
+
+const array3 = [1, 2, 3, 4, 5, 7];
+const isGreaterThanFive = array3.some(obj1.checkIfGreaterThan, obj1); 
+console.log(isGreaterThanFive);
+
+// mdn docs
+
+const even = (element) => element % 2 === 0;
+console.log(array3.some(even));
+
+// testing value of array elements
+
+function isBiggerThan10(element, index, array){
+    return element > 10;
+
+}
+
+[2, 5, 8, 1, 4].some(isBiggerThan10);
+console.log([12, 5, 8, 1, 4].some(isBiggerThan10));
+
+// arrow functions provide a shorter syntax for same test
+
+console.log([2, 5, 8, 1, 4].some(x => x > 10));
+console.log([12, 5, 8, 1, 4].some(x => x > 10));
+
+// checking whether a value exists in an array
+
+const fruits2 = ['apple', 'banana', 'orange', 'mango'];
+
+function checkAvailability(arr, val){
+    return arr.some((arrVal) => val === arrVal);
+}
+
+checkAvailability(fruits2, 'banana');
+checkAvailability(fruits2, 'orange');
+
+
+// converting any value to Boolean
+
+const Truthy_value = [true, "true", 1];
+
+function getBoolean(value){
+    if(typeof value === 'string'){
+        value = value.toLowerCase().trim();
+    }
+
+    return Truthy_value.some((t)=> t === value);
+}
+
+console.log(getBoolean(true));
+console.log(getBoolean('false'));
+console.log(getBoolean(1));
+console.log(getBoolean(0));
+console.log(getBoolean('true'));
+
+// using some() os sparse arrays
+
+// some() will ot run its predicate on empty slots
+
+console.log([1, , 3].some((x) => x === undefined)); // false
+console.log([1, , 3].some((x) => x !== 1)); // false
+console.log([1, undefined,  3].some((x) => x !== 1)); // true
+
+// calling some() on non-array objects
+
+const obj3 = {
+    length: 3,
+    0: 'a',
+    1: 'b',
+    2: 'c',
+};
+
+console.log(Array.prototype.some.call(obj3, (x) => x === "number"));
