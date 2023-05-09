@@ -49,7 +49,7 @@ const tarr4 = [];
 tarr4.join = 1; // re-assign 'join' with a non-function
 console.log(tarr4.toString()); // [object Array]
 
-console.log(Array.prototype.toString.call({join: () => 1}));
+console.log(Array.prototype.toString.call({ join: () => 1 }));
 
 
 /// /////////////////////////
@@ -87,7 +87,7 @@ a.join(""); // 'FireAirWater'
 // join treats empty slots the same as undefined and produces an extra separator
 
 console.log([1, , 3].join()); // '1,,3'
-console.log([1,undefined,3].join()); // '1,,3'
+console.log([1, undefined, 3].join()); // '1,,3'
 
 
 //calling join() on non-array objects
@@ -107,3 +107,71 @@ console.log(Array.prototype.join.call(jarrLike, '-'));
 //==    pop()  method    ==//
 // ======================////
 /////////////////////////////
+// deletes the last element of the array
+
+const parr = [1, 2, 3, 4, 5];
+const lastparr = parr.pop();
+console.log(lastparr);
+console.log(parr);
+
+//using a pop() on an empty array
+
+const parr1 = [];
+const parr2 = parr1.pop();
+console.log(parr2);
+console.log(parr1);
+
+// mdn
+
+const myFish = ["angel", "clown", "mandarin", "sturgeon"];
+
+const popped = myFish.pop();
+
+console.log(myFish); // ['angel', 'clown', 'mandarin' ]
+
+console.log(popped); // 'sturgeon'
+
+
+// calling pop() on an non-array objects
+
+const parrLike = {
+    length: 3,
+    unrelated: "foo",
+    2: 4
+};
+
+console.log(Array.prototype.pop.call(parrLike));
+console.log(parrLike);
+
+
+const plainObj = {};
+Array.prototype.pop.call(plainObj);
+console.log(plainObj);
+
+// using an object in an array-like fashion
+
+const collection = {
+    length: 0,
+    addElements(...elements) {
+        // obj.length will be incremented automatically
+        // every time an element is added.
+
+        // Returning what push returns; that is
+        // the new value of length property.
+        return [].push.call(this, ...elements);
+    },
+    removeElements() {
+        // obj.length will be decremented automatically
+        // every time an element is removed.
+
+        // Returning what pop returns; that is
+        // the removed element.
+        return [].pop.call(this);
+    },
+
+};
+
+collection.addElements(10, 20, 30);
+console.log(collection.length); // 3
+collection.removeElements();
+console.log(collection.length); // 2
