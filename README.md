@@ -1,9 +1,9 @@
 # Arrays
 
-concat() +(done)
-copyWithin() +(done)
-entries() +(done)
-every() +(done)
+concat()           +(done)
+copyWithin()       +(done)
+entries()          +(done)
+every()            +(done)
 fill()
 filter()
 find()
