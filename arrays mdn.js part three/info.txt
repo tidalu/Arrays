@@ -1,0 +1,5 @@
+1. delete() method
+2. sort() method
+3. splice() method
+4. slice() method4
+5. reverse() method

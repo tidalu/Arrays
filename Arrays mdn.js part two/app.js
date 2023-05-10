@@ -359,3 +359,5 @@ const uplainObj = {};
 
 Array.prototype.unshift.call(uplainObj, 1, 2);
 console.log(uplainObj);
+
+// part two is finished here!
