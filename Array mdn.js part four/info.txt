@@ -1,0 +1,6 @@
+1. forEach() method
+2. map() method
+3. filter() method
+4. reduce() method4
+5. reduceRight() method
+6. from() method
