@@ -61,3 +61,92 @@ const logArrayElements = (element, index/* array */) =>{
 
 //
 //
+[2, 5, , 9].forEach(logArrayElements);
+
+
+// using this arg
+
+class Counter {
+    constructor(){
+        this.sum = 0;
+        this.count= 0;
+    }
+    add(array){
+        array.forEach(function countEntry(entry){
+            this.sum += entry;
+            ++this.count;
+        }, this);
+    }
+}
+
+const obj = new Counter();
+obj.add([1, 2, 3, 4, 5]);
+console.log(obj.count);
+console.log(obj.sum);
+
+
+// an object copy function 
+
+const copy = (obj) => {
+    const copy = Object.create(Object.getPrototypeOf(obj));
+    const propNames = Object.getOwnPropertyNames(obj);
+    propNames.forEach((name) => {
+        const desc = Object.getOwnPropertyDescriptor(obj, name);
+        Object.defineProperty(copy, name, desc);
+    });
+    return copy;
+};
+
+const obj1 = {
+    a: 1,
+    b: 2,
+    c: 3
+}
+const obj2 = copy(obj1);
+console.log(obj2);
+
+// modifying the array during iteration
+
+const words = ['one', 'two', 'three', 'four'];
+words.forEach((word) => {
+    console.log(word);
+    if(word === 'two'){
+        words.shift();
+    }
+});
+
+console.log(words); 
+
+// flatten an array
+
+const flatten = (arr) => {
+    const result = [];
+    arr.forEach((item) => {
+        if(Array.isArray(item)){
+            result.push(...flatten(item));
+        }else{
+            result.push(item);
+        }
+    });
+    return result;
+};
+
+const nested = [1, 2, 3, [4, 5, [6, 7], 8, 9]];
+console.log(flatten(nested));
+
+// calling foeEach() on non-array objects
+
+const arrayLike = {
+    length: 3,
+    0: 2, 
+    1: 3,
+    2: 4,
+};
+
+Array.prototype.forEach.call(arrayLike, (num) => console.log(num));
+
+/// /////////////////////////\/
+// ======================////\/
+//==    map() method     ==//\/
+// ======================////\/
+/////////////////////////////\/
