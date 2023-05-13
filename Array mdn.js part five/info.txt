@@ -1,0 +1,13 @@
+1. isArray() method
+2. indexOf() method
+3. lastIndexOf() method
+4. find() method4
+5. findIndex() method
+6. includes() method
+7. flat() method
+8. flatMap() method
+9. keys method
+10. length method
+11. toLocaleString() method
+
+
