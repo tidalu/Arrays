@@ -605,7 +605,7 @@ const myArray = ["a", "b", "a", "b", "c", "e", "e", "c", "d", "d", "d", "d"];
 
 const myArrayWithNoDuplicates = myArray.reduce(
     (accumulator, currentValue) => {
-        if(!accumulator.includes(currentValue)){
+        if (!accumulator.includes(currentValue)) {
             return [...accumulator, currentValue];
         }
         return accumulator;
@@ -619,8 +619,8 @@ console.log(myArrayWithNoDuplicates);
 
 const numbersrr = [-5, 6, 2, 0];
 
-const doubledPositivenumbers = numbersrr.reduce((accumulator, value) =>{
-    if(value > 0){
+const doubledPositivenumbers = numbersrr.reduce((accumulator, value) => {
+    if (value > 0) {
         const doubled = value * 2;
         return [...accumulator, doubled];
     }
@@ -656,4 +656,188 @@ console.log(Array.prototype.reduce.call(arrLike, (a, b) => a + b));
 //==reduceRight() method ==//\/
 // ======================////\/
 /////////////////////////////\/
+
+// syntax 
+// array.reduceRight(callback, initialValue)
+// array.reduceRight(callback)
+
+
+const reducearr = [[0, 1], [2, 3], [4, 5]];
+
+const reduceRes = reducearr.reduceRight(
+    (accumulator, currentValue) => accumulator.concat(currentValue),
+
+);
+console.log(reduceRes);
+
+
+// how reduceRight() works without an initial value
+
+// arraySparse.reduceRight(
+//     (accumulator, currentValue, index, array) => {
+//         // ... 
+
+//     }
+// )
+
+// example
+
+console.log([0, 1, 2, 3, 4].reduceRight(
+    (accumulator, currentValue, index, array) =>
+        accumulator + currentValue,
+
+)); // 10
+
+// how reduceRIght works with an initial value
+
+[0, 1, 2, 3, 4].reduceRight(
+    (accumulator, currentValue, index, array) => accumulator + currentValue,
+    10,
+); // 20
+
+// sum up all values within an array
+
+const sumRight  = [0, 1, 2, 3, 4].reduceRight(
+     (a, b) => a+b   
+);
+console.log(sumRight);
+
+// flatten an array of arrays 
+
+const coArrays = [
+    [0, 1],
+    [2, 3],
+    [4, 5],
+
+];
+
+const flattenArr = coArrays.reduceRight((a,b) => a.concat(b), []);
+
+console.log(flattenArr);
+
+// difference between reduce() and reduceRight()
+
+const a = ['1', '2', '3', '4', '5'];
+
+const left = a.reduce(
+    (prev, cur) => prev + cur
+);
+const right = a.reduceRight(
+    (prev, cur) => prev + cur
+);
+
+console.log(left);
+console.log(right);
+
+// using reduceRight() with sparse arrays
+
+console.log([1, 2, , 4].reduceRight(
+    (a, b) => a + b
+)); // 7
+
+console.log([1, 2, undefined, 4].reduceRight((a, b) => a + b)); // NaN
+
+// calling reduceRight() on non-array objects
+
+const arrLike2 = {
+    length: 3,
+    0: 2, 
+    1: 3,
+    2: 4,
+};
+
+console.log(Array.prototype.reduceRight.call(arrLike2, (a, b) => a - b));
+
+
+/// /////////////////////////\/
+// ======================////\/
+//==     from() method   ==//\/
+// ======================////\/
+/////////////////////////////\/
+
+
+// syntax
+// array.from(arrayLike)
+// array.from(arraylike, mapFn)
+// array.from(arrayLike, mapFn, thisArg)
+
+
+// it creates a new , shallow copied array instance from 
+
+console.log(Array.from('foo'));
+
+
+console.log(Array.from([1, 2, 3], x => x + x));
+
+
+// array from a string 
+
+Array.from('foo');
+// [ 'f', 'o', 'o' ]
+
+// array from an set
+
+const set = new Set(['foo', 'bar', 'baz', 'foo']);
+console.log(Array.from(set));
+
+// array from a map
+
+const map = new Map([
+    [1, 2],
+    [3, 4],
+    [4, 8],
+]);
+
+console.log(Array.from(map));
+
+const mapper = new Map([
+    ['1','a'],
+    ['2','b'],
+]);
+
+console.log(Array.from(mapper.values()));
+console.log(Array.from(mapper.keys()));
+
+//array from a nodeLIst
+
+// create an array based on a property of Dom elements
+
+const images = document.querySelectorAll('img');
+const sources = Array.from(images, img => img.src);
+const insecureSources = sources.filter((link) => link.startsWith('https://'));
+
+
+// Array from an Array-like oobjects(argument)
+
+function f() {
+    return Array.from(arguments);
+
+}
+
+f(1, 2, 3);
+console.log(f(1, 2, 3));
+
+// using arrow functiona nd array From()
+
+console.log(Array.from([1, 2, 3], x => x * x));
+
+
+// calling from() on non-array constructions
+
+function NotArray(len) {
+    console.log("NotArray called with length", len);
+}
+
+// irretable
+
+console.log(Array.from.call(NotArray, new Set(['foo', 'bar', 'baz', 'foo'])));
+
+// array like
+
+console.log(Array.from.call(NotArray, {length:1, 0: "foo"}));
+
+
+// when the this value is not a constructor, a plain Array objects is returned .
+
+console.log(Array.from.call({}, {length:1, 0: "foo"}));
 
