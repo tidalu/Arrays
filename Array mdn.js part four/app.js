@@ -331,7 +331,7 @@ console.log("Filtered Array\n", arrByID);
 // [{ id: 15 }, { id: -1 }, { id: 3 }, { id: 12.2 }]
 
 console.log("Number of Invalid Entries =", invalidEntries);
-  // Number of Invalid Entries = 5
+// Number of Invalid Entries = 5
 
 // searching in array
 
@@ -354,8 +354,8 @@ console.log(filterItems(fri, 'a'));
 // use filter on sparse arrays
 // filter() will skip empty slots
 
-console.log([1, , undefined].filter((x)=>x===undefined));
-console.log([1, , undefined].filter((x)=>x !== 2));
+console.log([1, , undefined].filter((x) => x === undefined));
+console.log([1, , undefined].filter((x) => x !== 2));
 
 // calling filter() on non-array objects
 // filter method reads the length propertry of this and then accesses each integer index
@@ -375,8 +375,8 @@ console.log(Array.prototype.filter.call(farrayLike, (x) => x <= 'b'));
 
 let wordss = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
 
-const midofiedWords = wordss.filter((word, index, arr)=> {
-    arr[index+1] += ' extra';
+const midofiedWords = wordss.filter((word, index, arr) => {
+    arr[index + 1] += ' extra';
     return word.length < 6;
 });
 
@@ -384,7 +384,7 @@ console.log(midofiedWords);
 
 //appending new words 
 wordss = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
-const appendedWords = wordss.filter((word, index, arr)=> {
+const appendedWords = wordss.filter((word, index, arr) => {
     arr.push('new');
     return word.length < 6;
 
@@ -395,8 +395,265 @@ console.log(wordss);
 
 // deleting words 
 wordss = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
-const deletedWords = wordss.filter((word, index, arr)=> {
+const deletedWords = wordss.filter((word, index, arr) => {
     arr.pop();
     return word.length < 6;
 });
 console.log(deletedWords);
+
+
+
+/// /////////////////////////\/
+// ======================////\/
+//==   reduce() method   ==//\/
+// ======================////\/
+/////////////////////////////\/
+
+// syntax 
+// array.reduce(callback)
+// array.reduce(callback, initialValue)
+
+
+// chat open Ai syntax
+// array.reduce(function(accumulator, currentValue, currentIndex, array){
+// CODE TO PROCESS TE CURRENT ELEMENT
+// }, initialValue);
+
+const rarr = [1, 2, 3, 4];
+
+const initialValue = 0;
+const summWithinInitial = rarr.reduce(
+    (accumulator, currentValue) => accumulator + currentValue,
+    initialValue
+);
+
+console.log(summWithinInitial);
+
+const getMax = (a, b) => Math.max(a, b);
+
+
+// callback is invoked for each element in the array starting  at index 0
+[1, 100].reduce(getMax, 50); // 100
+[50].reduce(getMax, 10); // 50
+
+
+// function is invoked for each element in the array starting at index 0
+[1, 100].reduce(getMax); // 100
+
+// callback is not invoked
+[50].reduce(getMax); // 50  
+[].reduce(getMax, 1); // 1
+
+// [].reduce(getMax); // TYPE ERROR
+// finding the sum of all elements in an array
+
+const numr = [1, 2, 3, 4, 5];
+
+const sumr = numr.reduce(function (accumulator, currentValue) {
+    return accumulator + currentValue;
+}, 0);
+
+console.log(sumr);
+
+// flattening 
+nestedArray = [[1, 2], [3, 4], [5, 6]];
+
+const flattenedArray = nestedArray.reduce(function (accumulator, currentValue) {
+    return accumulator.concat(currentValue);
+}, []);
+
+console.log(flattenedArray);
+
+// finding the maximum value in the array
+
+const rnums = [10, 20, 5, 40, 30];
+
+const max = rnums.reduce(function (accumulator, currentValue) {
+    return Math.max(accumulator, currentValue);
+}, -Infinity);
+
+console.log(max);
+
+
+// how reduce() works without an initial value
+
+const arrayY = [15, 16, 17, 18, 19];
+
+function reducer(accumulator, currentValue, index) {
+    const returns = accumulator + currentValue;
+    console.log(
+        `accumulator: ${accumulator}, currentValue: ${currentValue}, index: ${index}, returns: ${returns}`,
+    );
+    return returns;
+}
+
+const res = arrayY.reduce(reducer);
+console.log(res);
+
+// how reduce() works with an initial value
+
+
+console.log([15, 16, 17, 18, 19].reduce(
+    (accumulator, currentValue) => accumulator + currentValue,
+    0,
+));
+
+// sum of values in an object arrays 
+
+const ojects = [
+    { x: 1 },
+    { x: 2 },
+    { x: 3 }
+];
+
+const sumobj = ojects.reduce(
+    (accumulator, currentValue) => accumulator + currentValue.x,
+    0,
+);
+console.log(sumobj);
+
+// flatten an array of arrays
+
+const flattened = [
+    [
+        0, 1
+    ],
+    [
+        2, 3
+    ],
+    [
+        4, 5
+    ],
+].reduce(
+    (accumulator, currentValue) => accumulator.concat(currentValue),
+    [],
+);
+
+console.log(flattened);
+
+
+// counting instances of values in a object
+
+const names = ['alice', 'bob', 'carl', 'david', 'eve'];
+
+const countesNames = names.reduce(
+    (allNames, name) => {
+        const currCount = allNames[names] ?? 0;
+        return {
+            ...allNames,
+            [name]: currCount + 1,
+        };
+    }, {});
+
+console.log(countesNames);
+
+// grouping objects by a property
+
+const people = [
+    { name: 'alice', age: 20 },
+    { name: 'bob', age: 21 },
+    { name: 'carl', age: 20 },
+    { name: 'david', age: 23 },
+    { name: 'eve', age: 21 },
+
+];
+
+function groupBy(objectsArray, property) {
+    return objectsArray.reduce((acc, obj) => {
+        const key = obj[property];
+        const curGroup = acc[key] ?? [];
+
+        return { ...acc, [key]: [...curGroup, obj] };
+    }, {});
+}
+
+
+const groupedPeople = groupBy(people, 'age');
+
+console.log(groupedPeople);
+
+// conctentaing arrays contained in an array of objects using the spread syntax and initialValue 
+
+const friends = [
+    {
+        name: "Anna",
+        books: ["Bible", "Harry Potter"],
+        age: 21,
+    },
+    {
+        name: "Bob",
+        books: ["War and peace", "Romeo and Juliet"],
+        age: 26,
+    },
+    {
+        name: "Alice",
+        books: ["The Lord of the Rings", "The Shining"],
+        age: 18,
+    },
+];
+
+const allbooks = friends.reduce(
+    (accumulator, currentValue) => [...accumulator, ...currentValue.books],
+    ["Alphabet"],
+);
+
+console.log(allbooks);
+
+// remove duplicate items in an array
+
+const myArray = ["a", "b", "a", "b", "c", "e", "e", "c", "d", "d", "d", "d"];
+
+const myArrayWithNoDuplicates = myArray.reduce(
+    (accumulator, currentValue) => {
+        if(!accumulator.includes(currentValue)){
+            return [...accumulator, currentValue];
+        }
+        return accumulator;
+    }, []
+
+);
+
+console.log(myArrayWithNoDuplicates);
+
+// replace .filter().map() with reduce()
+
+const numbersrr = [-5, 6, 2, 0];
+
+const doubledPositivenumbers = numbersrr.reduce((accumulator, value) =>{
+    if(value > 0){
+        const doubled = value * 2;
+        return [...accumulator, doubled];
+    }
+    return accumulator;
+}, []);
+
+console.log(doubledPositivenumbers);
+
+// using reduce() with sparse arrays 
+
+console.log([1, 2, , 4].reduce(
+    (a, b) => a + b
+)); // no effect , // 7
+
+console.log([1, 2, undefined, 4].reduce((a, b) => a + b)); // NaN
+
+// calling the reduc on non-array objects
+
+const arrLike = {
+    length: 3,
+    0: 'a',
+    1: 'b',
+    2: 'c',
+};
+
+console.log(Array.prototype.reduce.call(arrLike, (a, b) => a + b));
+
+
+
+
+/// /////////////////////////\/
+// ======================////\/
+//==reduceRight() method ==//\/
+// ======================////\/
+/////////////////////////////\/
+
