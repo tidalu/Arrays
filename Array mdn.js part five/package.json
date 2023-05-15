@@ -1,0 +1,17 @@
+"viewsContainers" : {
+    "activitybar": [
+        {
+            "id": "webview-explorer",
+            "title": "Webview Explorer"
+        }
+    ]
+},
+"views": {
+    "webview-explorer": [
+        {
+            "id": "myWebview",
+            "name": "My Webview",
+            "when": "view == webview-explorer"
+        }
+    ]
+},

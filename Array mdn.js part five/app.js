@@ -52,17 +52,17 @@ console.log(Array.isArray({ __proto__: Array.prototype }));
 
 // instanceof vs Array.isArray()
 
-const iframe = document.createElement('iframe');
-document.body.appendChild(iframe);
-const xArray = window.frames[window.frames.length - 1].Array;
-const arr = new xArray(1, 2, 3); // [1, 2, 3]
+// const iframe = document.createElement('iframe');
+// document.body.appendChild(iframe);
+// const xArray = window.frames[window.frames.length - 1].Array;
+const arr = new Array(1, 2, 3); // [1, 2, 3] xarray
 
 // correctly checking  for Array 
 
 Array.isArray(arr); // true
 // the prototype of arr is xArray.prototype, which is a 
 // different object from Array.prototype
-console.log(arr instanceof xArray); 
+console.log(arr instanceof Array); // xArray
 
 
 
@@ -121,7 +121,7 @@ const element = 'a';
 let idx = array3.indexOf(element);
 while (idx !== -1) {
     indices.push(idx);
-    idx = array3.indexOf(element, idx + 1);
+    idx = array3.indexOf(element, idx + 1); // !!!
 }
 
 console.log(    indices);
@@ -172,6 +172,14 @@ console.log(Array.prototype.indexOf.call(arrayLike, 5));  // -1
 // ======================////\/
 /////////////////////////////\/
 
+// syntax
+// array.lastIndexOf(searchElement)
+// array.lastIndexOf(searchElement, fromIndex)
+
+// from index here is an index to search element from that index
+// it is optional, when it is given it saves some time and memory
+// otherwise it look for whole array
+
 // The lastIndexOf() method returns the last index at which a given element can be found in the array, or -1 if it is not present. The array is searched backwards, starting at fromIndex.
 
 const animal = ['Dodo', 'Tiger', 'Penguin', 'Dodo'];
@@ -182,7 +190,30 @@ console.log(animal.lastIndexOf('Dodo'));
 console.log(animal.lastIndexOf('Tiger')); // 1 cuz it is here only one exists
 
 
+const numbers3 = [2, 5, 9, 2];
+numbers3.lastIndexOf(2); // 3
+numbers3.lastIndexOf(7); // -1 cuz not exists
+numbers3.lastIndexOf(2, 3); // 3
+numbers3.lastIndexOf(2, 2); // 0
+numbers3.lastIndexOf(2, -1); // 3
+numbers3.lastIndexOf(2, -2); // 0
 
+// finding all the occurrences of an element
+
+const indices1 = [];
+const array2 = ["a", "b", "a", "c", "a", "d"];
+const element1 = 'a';
+let idx1 = array2.lastIndexOf(element1);
+while (idx1 !== 1) {
+    indices1.push(idx1);
+    idn = idx > 0 ? array.lastIndexOf(element1, idx -1) : -1; // !!!
+}
+
+console.log(indices1);
+
+// using lastIndexOf() on sparse arrays
+
+console.log([1, , 3].lastIndexOf()); // -1
 
 
 
