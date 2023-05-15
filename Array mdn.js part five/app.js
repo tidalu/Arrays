@@ -632,3 +632,37 @@ console.log([1, 2, 3, 4].flatMap((x) => [, x*2])); // [2, 4, 6, 8] // in this ca
 
 // calling flatMap() on non-array objects
 
+const arrayLike2 = {
+    length: 2, 
+    0: 1, 
+    1: 2,
+    2: 3
+};
+
+console.log(Array.prototype.flatMap(arrayLike2, (x) => [x, x*2, x*3]));
+// [1, 2, 2, 4, 3, 6]
+
+// Array-like objects returned from the callback won't be flattened
+
+console.log(
+    Array.prototype.flatMap.call(arraylike2, (x) => ({
+        length: 1, 
+        0: x
+    })), 
+);
+
+
+/// /////////////////////////\/
+// ======================////\/
+//==     keys() method    =//\/
+// ======================////\/
+/////////////////////////////\/
+
+// keys()  methods returns a new array iterator object that contains the keys for each index in the array
+
+
+// syntax
+// array.keys()
+
+const array23 = ['a', 'b', 'c'];
+const iterator = array23.keys();
