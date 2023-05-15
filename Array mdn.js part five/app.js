@@ -660,9 +660,31 @@ console.log(
 
 // keys()  methods returns a new array iterator object that contains the keys for each index in the array
 
-
 // syntax
 // array.keys()
 
 const array23 = ['a', 'b', 'c'];
 const iterator = array23.keys();
+
+
+for (const key in iterator) {
+    console.log(key);
+}
+
+// using key() on sparse arrays 
+const array24 = ['a', , 'c'];
+const sparseArrays = Object.keys(array24);
+const denseKeys = [...array24.keys()];
+console.log(sparseArrays); [ '0', '2' ]
+console.log(denseKeys); [0, 1, 2];
+
+// calling keys() on non-array objects
+const arrayLike3 = {
+    length: 3,
+};
+for(const entry of Array.prototype.keys.call(arrayLike3)){
+    console.log(entry);
+}
+// 0
+// 1
+// 2
