@@ -679,12 +679,155 @@ console.log(sparseArrays); [ '0', '2' ]
 console.log(denseKeys); [0, 1, 2];
 
 // calling keys() on non-array objects
-const arrayLike3 = {
+const arrayLike12 = {
     length: 3,
 };
-for(const entry of Array.prototype.keys.call(arrayLike3)){
+for(const entry of Array.prototype.keys.call(arrayLike12)){
     console.log(entry);
 }
 // 0
 // 1
 // 2
+
+
+/// /////////////////////////\/
+// ======================////\/
+//==     array.length     =//\/
+// ======================////\/
+/////////////////////////////\/
+
+const clothing = ['shirt', 'pants', 'shoes'];
+
+console.log(clothing.length);
+
+// a non-negative integre less than 2^32
+
+// property attribute of array: length
+// writable: yes 
+// enumerable: no 
+// configurable: no 
+
+
+
+const listA = [1, 2, 3];
+const listB = new Array(6);
+
+console.log(listA.length);
+console.log(listB.length); // 6
+
+listB.length = 2**32-1; //  4294967296
+// RangeError: Invalid array length
+
+const listC = new Array(-100); // negative numbers are not allowed 
+// RangeError: Invalid array length
+
+const arr2 = [1, 2];
+console.log(arr2); //
+
+arr2.length = 5;
+console.log(arr2); // [1, 2, <3 empty items>];
+
+arr2.forEach((element) => console.log(element));
+// 1
+// 2
+
+// iterating over an array
+
+const numbers = [1, 2, 3, 4, 5];
+const length = numbers.length;
+
+for (let i = 0; i < length; i++) {
+    numbers[i] *= 2;
+}
+// now : [2, 4, 6, 8, 10]
+
+// shortening an array
+
+const numbers2 = [1, 2, 3, 4, 5];
+
+if (numbers2.length > 3) {
+    numbers2.length = 3;
+}
+
+cnonsole.log(numbers2); // [1, 2, 3]
+console.log(numbers2.length); // 3
+console.log(numbers2[3]); // undefined; the extra elements are deleted
+
+// create empty array of fixed length
+
+const numbers4 = [];
+numbers4.length = 3;
+console.log(numbers4); // [empty x 3]
+
+// array with non-writable length
+
+'use strict';
+
+const numbers5 = [1, 2, 3, 4, 5];
+Object.defineProperty(numbers5, 'length', {
+    writable: false
+});
+    // numbers5[5] = 6; //  // typeError: cannotAssign to read only property 'length' of object '[object Array]';
+
+
+
+
+
+
+
+/// /////////////////////////\/
+// ======================////\/
+//==    toLocalString()   =//\/
+// ======================////\/
+/////////////////////////////\/
+
+// syntax 
+
+// array.toLocaleString()
+// array.toLocaleString(locales);
+// array.toLocaleString(locales, options);
+
+// a string representing the elements of the array
+
+const arr3 = [1, 'a', new Date('21 Dec 1997 14:12:00 UTC')];
+const localString = arr3.toLocaleString('en', {timeZone: 'UTC'});
+
+console.log(localString);
+
+// Expected output: "1,a,12/21/1997, 2:12:00 PM",
+// This assumes "en" locale and UTC timezone - your results may vary
+
+// if an element is undefined or null, it will be convertd to an empty string instead of 'null' or 'undefined'
+
+
+// using  locales and objects
+
+
+// the elements of the array are converted to string using their toLocaleString() methods
+
+Object.prototype.toLocaleString();
+Number.prototype.toLocaleString();
+Date.prototype.toLocaleString();
+
+
+const prices = ["￥7", 500, 8123, 12];
+prices.toLocaleString('ja-JP', {style: 'currency', currency: 'JPY'});
+
+// "￥7,￥500,￥8,123,￥12"
+
+// using toLocaleString() os sparse aarrays
+
+console.log([1, , 3].toLocaleString()); // '1,,3'
+
+
+// calling toLocaleString() on non-array objects
+
+const arrayLike6 = {
+    length: 3, 
+    0: 1, 
+    1: 2,
+    2: 3,
+};
+
+console.log(Array.prototype.toLocaleString.call(arrayLike6));
+// 1,2,3
