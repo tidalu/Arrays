@@ -344,7 +344,65 @@ console.log(str11.substring(0, 10)); // 'Mozilla'
 
 //using substring() with length property
 
+const text = 'Mozilla';
 
+console.log(text.substring(text.length - 4)); //illa  is such position is give the last 4 characters of the string
+
+console.log(text.substring(text.length-5)); // zilla
+
+
+// difference between substring() and substr()
+
+const text1 = 'Mozilla';
+
+console.log(text1.substring(2, 5)); // zil
+console.log(text1.substring(2, 3)); // zil
+
+// substr takes start and ends of the index 
+// end index starts being counted from the end of the string
+
+
+
+// difference between substring() and slice()
+// they are almost identical just only the difference is the start and end index( when they are negative)
+
+const text2 = 'Mozilla';
+console.log(text2.substring(5, 2)); // 'zil'
+// substring, // when the start index is larger than the end index, it swaps the start and end index
+console.log(text2.slice(5, 2)); // " "
+// when start is larger than the end, it will return empty string
+
+//
+// negative numbers 
+console.log(text2.substring(-5, 2)); // 'Mo' counts -5 from the end and count 2 
+console.log(text2.substring(-5, -2)); // ''
+
+
+console.log(text2.slice(-5, 2)); // ""
+console.log(text2.slice(-5, -2)); // 'zil'
+
+// replacing a substring within a string
+
+// replace all olds with news in the string fulls
+
+function replaceString(oldS, newS, fullS) {
+    for(let i = 0; i < fullS.length; ++i) {
+        if(fullS.substring(i, i+oldS.length) === oldS) {
+            fullS = fullS.substring(0, i) + newS + fullS.substring(i + oldS.length, fullS.length);
+        }
+    }
+    return fullS;
+}
+
+console.log(replaceString("World", "Web", "Brave New World"));
+
+
+// better method
+
+function replaceStringBetter(oldS, newS, fullS) {
+    return fullS.replace(oldS, newS);
+}
+console.log(replaceStringBetter("World", "Web", "Brave New World"));
 
 
 /// /////////////////////////\/
@@ -354,6 +412,63 @@ console.log(str11.substring(0, 10)); // 'Mozilla'
 /////////////////////////////\/
 
 
+// string.split(separator)
+// string.split(separator, limit)
+
+// returned value : an array of strings, split at each point where the separator occurs in the given string
+
+const text3 = 'The quick brown fox jumps over the lazy dog.';
+
+const words = text3.split(' ');
+console.log(words);  // depends on the '' and it's space in it, if there is not space in the string, it will return an array with each letter is array item, if there is space in the ' ' it will return an array with each item separated with space 
+console.log(words[3]);
+
+const words1 = text3.split('');
+
+const strCopy =  text3.split();
+console.log(strCopy);
+// if it is not separated with anything, then it will return whole content, it is like just a shallow copy of the string
+
+
+// using split()
+
+const emptyString = '';
+
+// if string is empty and separator is not
+console.log(emptyString.split('a'));
+// ['']
+
+// string and separator are both empty strings
+console.log(emptyString.split(emptyString));
+
+function splitString(string2split, separator) {
+    const arrayOfStrings = string2split.split(separator);
+
+    console.log("The original string is: " + string2split);
+    console.log("The separator is: " + separator);
+    console.log(
+        "The array has ", 
+        arrayOfStrings.length 
+        , " elements: ", arrayOfStrings.join('/'),
+    );
+}
+
+const tempestString = 'Oh brave new world that has such people in it.';
+const monthString = "January, February, March, April, May, June, July, August, September, October, November, December";
+
+const space = ' ';
+const comma = ',';
+
+splitString(tempestString, space);
+splitString(tempestString);
+splitString(monthString, comma);
+
+// returnig a limited number of splits
+
+const myString1 = "Hello World. How are you doing today?";
+const splits1 = myString1.split(" ", 2);
+
+console.log(splits1);
 
 
 /// /////////////////////////\/
@@ -361,6 +476,38 @@ console.log(str11.substring(0, 10)); // 'Mozilla'
 //==      includes()      =//\/
 // ======================////\/
 /////////////////////////////\/
+
+// returns boolean
+// does case-sensitive search
+
+
+// syntax
+// string.includes(searchString)
+// string.includes(searchString, position)
+
+// position is default 0, ot when  it is given it starts searching from that given position
+
+
+const sent = "the quick brown fox jumps over the lazy dog.";
+
+const fox = "fox";
+console.log(sent.includes(fox)?"yes":"no");
+console.log(`The word "${fox}" ${sent.includes(fox)?"is":"is not"} in the sentence`);
+
+// case sensitive
+console.log("Blue Whale".includes("blue")); // false
+console.log("Blue whale".toLowerCase().includes("blue")); // true
+
+// using includes 
+
+const text4 = "To be, or not to be, that is the question.";
+
+console.log(text4.includes("To be")); 
+console.log(text4.includes("question")); 
+console.log(text4.includes("nonon")); 
+console.log(text4.includes("To be", 1)); 
+console.log(text4.includes("TO BE"));
+console.log(text4.includes("")); //true
 
 
 
@@ -372,7 +519,44 @@ console.log(str11.substring(0, 10)); // 'Mozilla'
 // ======================////\/
 /////////////////////////////\/
 
+// startsWith 
 
+// returns boolean 
+
+// case-sensitive
+
+const text5 = 'Saturday night plans';
+
+console.log(text5.startsWith('Sat'));
+
+console.log(text5.startsWith('Sat', 3));
+
+// return value, true if the given characters are found at the beginning of the string, including when searchString is an empty string , otherwise false.
+
+//
+
+const text6 = 'To be, or not to be, that is the question.';
+console.log(text6.startsWith('To be'));
+console.log(text6.startsWith('not to be'));
+console.log(text6.startsWith("not to be", 10));
+
+// endsWith
+
+// syntax
+// string.endsWith(searchString)
+// string.endsWith(searchString, endPosition)
+
+// just returns boolean and opposite of startsWith
+
+
+const text7 = 'Cats are the best!';
+
+console.log(text7.endsWith('best!')); // true
+console.log(text7.endsWith('best', 17)); // true
+
+const text8 = 'Is this a question?';
+
+console.log(text8.endsWith('question')); // false
 
 
 
@@ -382,9 +566,30 @@ console.log(str11.substring(0, 10)); // 'Mozilla'
 // ======================////\/
 /////////////////////////////\/
 
+// syntax
 
+// concat(str1)
+// concat(str1, str2)
+// concat(str1, str2, /* …, */ strN)
 
+const text9 = 'Hello';
+const text10 = 'World';
 
+console.log(text9.concat(', ', text10));
+console.log(text9.concat(' ', text10));
+
+const hello = "Hello, ";
+console.log(hello.concat("Kevin", ". Have a nice day."));
+// Hello, Kevin. Have a nice day.
+
+const greetList = ["Hello", " ", "Venkat", "!"];
+"".concat(...greetList); // "Hello Venkat!"
+
+"".concat({}); // "[object Object]"
+"".concat([]); // ""
+"".concat(null); // "null"
+"".concat(true); // "true"
+"".concat(4, 5); // "45"
 
 /// /////////////////////////\/
 // ======================////\/
@@ -393,6 +598,23 @@ console.log(str11.substring(0, 10)); // 'Mozilla'
 /////////////////////////////\/
 
 
+// syntax
+
+// string.repeat(count)
+
+const mood = 'Happy!';
+console.log("I feel " + mood.repeat(4));
+
+
+// "abc".repeat(-1); // RangeError
+// "abc".repeat(0); // ''
+// "abc".repeat(1); // 'abc'
+// "abc".repeat(2); // 'abcabc'
+// "abc".repeat(3.5); // 'abcabcabc' (count will be converted to integer)
+// "abc".repeat(1 / 0); // RangeError
+
+// ({ toString: () => "abc", repeat: String.prototype.repeat }).repeat(2);
+// // 'abcabc' (repeat() is a generic method)
 
 
 
@@ -403,6 +625,21 @@ console.log(str11.substring(0, 10)); // 'Mozilla'
 //==      trimEnd()       =//\/
 // ======================////\/
 /////////////////////////////\/
+
+
+// removes the white space from both sides: returns a new string: without mutating
+
+const greeting = "   Hello World   ";
+
+console.log(greeting.trim());
+
+
+const text11 ='   foo        ';
+console.log(text11.trim().length);
+console.log(text11.length);
+
+// trimStart() removes from the lefty side
+// trimEnd() removes from the righty side
 
 
 
