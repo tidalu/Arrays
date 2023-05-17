@@ -260,11 +260,89 @@ console.log(anyString1.lastIndexOf("Brave")); // 7
 // ======================////\/
 /////////////////////////////\/
 
-// string
+
+// slice
+
+// syntax
+
+// string.slice(indexStart)
+// string.slice(indexStart, indexEnd)
+
+
+// 
 const str4 = 'The quick brown fox jumps over the lazy dog.';
 
 console.log(str4.slice(31)); // "the lazy dog."
+// slice cuts from the position given to the end of the string or somehow if end is given, it will cut between,
 
+console.log(str4.slice(4, 19)); // from index 4 till 19
+
+console.log(str4.slice(-4)); // if somehow position is -4 it will count from the end, kinda reverse counting
+// dog.
+
+console.log(str4.slice(-9, -5)); // from index -9 till -5
+// lazy
+
+// using slice() to create a new string
+
+const str5 = 'The morning is upon us.';  // length is 23
+const str6 = str5.slice(1, 8);
+console.log(str6);
+const str7 = str5.slice(4, -2); 
+console.log(str7);
+const str8 = str5.slice(12);
+console.log(str8);
+console.log(str5.slice(30)); // when the position is given larger than the length of the string, return value is empty string
+// ""
+
+// using slice() with negative indexes
+
+const str9 = 'The morning is upon us.';
+str.slice(-3); // us.
+str9.slice(-3, -1); // us
+str9.slice(0, -1); // The morning is upon us
+str9.slice(4, -1); // orning is upon us
+
+
+console.log(str9.slice(-11, 16)); // "is u"
+
+console.log(str9.slice(11, -7)); // 'is u'
+
+console.log(str9.slice(-5, -1)); // "n us"
+
+////////////////////////////////////////////
+
+// substring()
+
+// string.substring(indexStart)
+// string.substring(indexStart, indexEnd)
+
+// returns the part of the string from the start index up to and excludinbg the end index, or to the nd of the string if no end index is supplied
+
+const str10 = 'Mozilla';
+
+console.log(str10.substring(1, 3)); // oz
+
+console.log(str10.substring(2)); // zilla
+
+
+// using substring()
+
+const str11 = 'Mozilla';
+console.log(str11.substring(0, 1)); // M
+console.log(str11.substring(1, 0)); // M
+
+console.log(str11.substring(0, 6)); // Mozill
+
+console.log(str11.substring(4)); // lla
+
+console.log(str11.substring(4, 7)); // lla
+console.log(str11.substring(7, 4)); // lla
+
+console.log(str11.substring(0, 7)); // 'Mozilla'
+console.log(str11.substring(0, 10)); // 'Mozilla'
+
+//using substring() with length property
 
 
 
