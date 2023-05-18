@@ -643,9 +643,6 @@ console.log(text11.length);
 
 
 
-
-
-
 /// /////////////////////////\/
 // ======================////\/
 //==       padStart()     =//\/
@@ -653,9 +650,40 @@ console.log(text11.length);
 // ======================////\/
 /////////////////////////////\/
 
+// syntax 
+// string.padstart(targetLength)
+// string.padend(targetLength, string)
+
+// puts string or specified target length from the beginning
+const text12 = '5';
+
+console.log(text12.padStart(5, '0'));
 
 
+console.log("abc".padStart(12, "foo"));
+console.log("abc".padEnd(12).length);
+console.log("abc".padStart(6, "123456")); 
+console.log("abc".padStart('abd'));
+// if we only give the string, it wont work, 
 
+// fixed width string number conversation
+
+// Javascript version of: (unsigned)
+// printf "%0*d" with num
+
+
+function leftFillNum(num, targetlength) {
+    return num.toString().padStart(targetlength, '0');
+}
+
+const num = 123;
+console.log(leftFillNum(num, 5));
+
+// padEnd()
+
+// syntax
+
+// it is just opposite of the padstart iot add in the end
 
 /// /////////////////////////\/
 // ======================////\/
@@ -663,7 +691,57 @@ console.log(text11.length);
 // ======================////\/
 /////////////////////////////\/
 
+// syntax
 
+// string.localeCompare(compareString)
+// string.localeCompare(compareString, locales)
+// string.localCompare(compareString, locales, options)
+
+const  a = 'réservé'; // with accent, lowercase;
+const b  = 'RESERVE'; // no accent, uppercase;
+
+console.log(a.localeCompare(b));
+
+// return negative if reference str occurs before comparingString; positive if the reference str occurs after comparingString; 0 of they are equivalent;
+
+console.log("a".localeCompare('c')); // -2 or -1 (or some other negative values) --- the letter 'a' is before 'c' yielding a negative value
+
+//
+
+console.log('check'.localeCompare('against')); // 1 or 2//
+
+// if they are equal, return 0
+
+console.log('a'.localeCompare('a')); // 0
+
+// sort an array
+
+const items = ["réservé", "Premier", "Cliché", "communiqué", "café", "Adieu"];
+items.sort((a, b) => a.localeCompare(b, 'fr', {ignorePunctuation: true}));
+
+console.log(items); //
+
+
+// localle compare is not supported in all browsers, to check
+
+function localeCompareSupportsLocales() {
+    try {
+        "foo".localeCompare("bar", 'i');
+        }  catch(e) {
+            return e.name === "RangeError";
+            }
+        return false;
+    }
+
+console.log(localeCompareSupportsLocales());
+
+// numeric sorting
+
+console.log('2'.localeCompare('10')); // 1
+
+console.log("2".localeCompare("10", undefined, { numeric: true }));
+
+console.log("2".localeCompare('10', 'en-u-kn-true' ));
 
 
 /// /////////////////////////\/
@@ -671,6 +749,8 @@ console.log(text11.length);
 //==       search()       =//\/
 // ======================////\/
 /////////////////////////////\/
+
+
 
 
 
