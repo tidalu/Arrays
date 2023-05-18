@@ -96,18 +96,18 @@ function fixedChatAt(str, idx) {
         const lastIndex = surrogatePairs.lastIndex;
         if (lastIndex - 2 < idx) {
             idx++;
-        }else {
+        } else {
             break;
         }
     }
 
-    if(idx >= str.length || idx < 0) {
+    if (idx >= str.length || idx < 0) {
         return "";
     }
 
     let ret = str.charAt(idx);
 
-    if(
+    if (
         /[\uD800-\uDBFF]/.test(ret) &&
         /[\uDC00-\uDFFF]/.test(str.charAt(idx + 1))
     ) {
@@ -203,7 +203,7 @@ const str3 = "To be, or not to bem that is the question.";
 let count = 0;
 let position = str3.indexOf("e");
 
-while(position !== -1) {
+while (position !== -1) {
     count++;
     position = str3.indexOf("e", position + 1);
 
@@ -288,7 +288,7 @@ console.log(str4.slice(-9, -5)); // from index -9 till -5
 const str5 = 'The morning is upon us.';  // length is 23
 const str6 = str5.slice(1, 8);
 console.log(str6);
-const str7 = str5.slice(4, -2); 
+const str7 = str5.slice(4, -2);
 console.log(str7);
 const str8 = str5.slice(12);
 console.log(str8);
@@ -348,7 +348,7 @@ const text = 'Mozilla';
 
 console.log(text.substring(text.length - 4)); //illa  is such position is give the last 4 characters of the string
 
-console.log(text.substring(text.length-5)); // zilla
+console.log(text.substring(text.length - 5)); // zilla
 
 
 // difference between substring() and substr()
@@ -386,8 +386,8 @@ console.log(text2.slice(-5, -2)); // 'zil'
 // replace all olds with news in the string fulls
 
 function replaceString(oldS, newS, fullS) {
-    for(let i = 0; i < fullS.length; ++i) {
-        if(fullS.substring(i, i+oldS.length) === oldS) {
+    for (let i = 0; i < fullS.length; ++i) {
+        if (fullS.substring(i, i + oldS.length) === oldS) {
             fullS = fullS.substring(0, i) + newS + fullS.substring(i + oldS.length, fullS.length);
         }
     }
@@ -425,7 +425,7 @@ console.log(words[3]);
 
 const words1 = text3.split('');
 
-const strCopy =  text3.split();
+const strCopy = text3.split();
 console.log(strCopy);
 // if it is not separated with anything, then it will return whole content, it is like just a shallow copy of the string
 
@@ -447,8 +447,8 @@ function splitString(string2split, separator) {
     console.log("The original string is: " + string2split);
     console.log("The separator is: " + separator);
     console.log(
-        "The array has ", 
-        arrayOfStrings.length 
+        "The array has ",
+        arrayOfStrings.length
         , " elements: ", arrayOfStrings.join('/'),
     );
 }
@@ -491,8 +491,8 @@ console.log(splits1);
 const sent = "the quick brown fox jumps over the lazy dog.";
 
 const fox = "fox";
-console.log(sent.includes(fox)?"yes":"no");
-console.log(`The word "${fox}" ${sent.includes(fox)?"is":"is not"} in the sentence`);
+console.log(sent.includes(fox) ? "yes" : "no");
+console.log(`The word "${fox}" ${sent.includes(fox) ? "is" : "is not"} in the sentence`);
 
 // case sensitive
 console.log("Blue Whale".includes("blue")); // false
@@ -502,10 +502,10 @@ console.log("Blue whale".toLowerCase().includes("blue")); // true
 
 const text4 = "To be, or not to be, that is the question.";
 
-console.log(text4.includes("To be")); 
-console.log(text4.includes("question")); 
-console.log(text4.includes("nonon")); 
-console.log(text4.includes("To be", 1)); 
+console.log(text4.includes("To be"));
+console.log(text4.includes("question"));
+console.log(text4.includes("nonon"));
+console.log(text4.includes("To be", 1));
 console.log(text4.includes("TO BE"));
 console.log(text4.includes("")); //true
 
@@ -634,7 +634,7 @@ const greeting = "   Hello World   ";
 console.log(greeting.trim());
 
 
-const text11 ='   foo        ';
+const text11 = '   foo        ';
 console.log(text11.trim().length);
 console.log(text11.length);
 
@@ -662,7 +662,7 @@ console.log(text12.padStart(5, '0'));
 
 console.log("abc".padStart(12, "foo"));
 console.log("abc".padEnd(12).length);
-console.log("abc".padStart(6, "123456")); 
+console.log("abc".padStart(6, "123456"));
 console.log("abc".padStart('abd'));
 // if we only give the string, it wont work, 
 
@@ -697,8 +697,8 @@ console.log(leftFillNum(num, 5));
 // string.localeCompare(compareString, locales)
 // string.localCompare(compareString, locales, options)
 
-const  a = 'réservé'; // with accent, lowercase;
-const b  = 'RESERVE'; // no accent, uppercase;
+const a = 'réservé'; // with accent, lowercase;
+const b = 'RESERVE'; // no accent, uppercase;
 
 console.log(a.localeCompare(b));
 
@@ -717,7 +717,7 @@ console.log('a'.localeCompare('a')); // 0
 // sort an array
 
 const items = ["réservé", "Premier", "Cliché", "communiqué", "café", "Adieu"];
-items.sort((a, b) => a.localeCompare(b, 'fr', {ignorePunctuation: true}));
+items.sort((a, b) => a.localeCompare(b, 'fr', { ignorePunctuation: true }));
 
 console.log(items); //
 
@@ -727,11 +727,11 @@ console.log(items); //
 function localeCompareSupportsLocales() {
     try {
         "foo".localeCompare("bar", 'i');
-        }  catch(e) {
-            return e.name === "RangeError";
-            }
-        return false;
+    } catch (e) {
+        return e.name === "RangeError";
     }
+    return false;
+}
 
 console.log(localeCompareSupportsLocales());
 
@@ -741,7 +741,7 @@ console.log('2'.localeCompare('10')); // 1
 
 console.log("2".localeCompare("10", undefined, { numeric: true }));
 
-console.log("2".localeCompare('10', 'en-u-kn-true' ));
+console.log("2".localeCompare('10', 'en-u-kn-true'));
 
 
 /// /////////////////////////\/
@@ -751,8 +751,26 @@ console.log("2".localeCompare('10', 'en-u-kn-true' ));
 /////////////////////////////\/
 
 
+// syntax 
+// string.search(pattern/regexp)
 
+const par = 'The quick brown fox jumps over the lazy dog.';
 
+// return value is the index of the first match  or -1 if no match
+const pattern = /[^\w\s]/g;
+console.log(par.search(pattern));
+
+console.log(par[par.search(pattern)]);
+
+//
+
+const hey = 'hey JudE'
+
+const re = /[A-Z]/;
+const reDot = /[.]/;
+
+console.log(hey.search(re));
+console.log(hey.search(reDot));
 
 
 
@@ -763,8 +781,36 @@ console.log("2".localeCompare('10', 'en-u-kn-true' ));
 // ======================////\/
 /////////////////////////////\/
 
+// match
+
+// syntax
+// string.match(pattern/regexp)
+
+// the match() methods retrieves the result of matching a string against a regular expression.
+
+const par2 = 'The quick brown fox jumps over the lazy dog. It barked.';
+
+const regex = /[A-Z]/g;
+const found = par2.match(regex);
+console.log(found);
 
 
+//
+const par3 = 'For more information, please see Chapter 3.4.5.1';
+const regex2 = /see (chapter \d+(\.\d)*)/i;
+const found2 = par3.match(regex2);
+
+console.log(found2); 
+
+// 11111111111111111111111111111111111111111111
+// 1111                                 1111111
+// 1111                                 1111111
+// 1111                                 1111111
+// 1111        matchAll()               1111111
+// 1111                                 1111111
+// 1111                                 1111111
+// 1111                                 1111111
+// 11111111111111111111111111111111111111111111
 
 
 
@@ -775,8 +821,27 @@ console.log("2".localeCompare('10', 'en-u-kn-true' ));
 // ======================////\/
 /////////////////////////////\/
 
+// syntax 
+// string.replace(pattern, replacement);
 
+// replacement can be a string or a function
+// doesn't mutate the original string
 
+// replace 
+// returns a new string with one , some, or all matches of a pattern replace by a replacement
+
+const par4 = 'The quick brown fox jumps over the lazy dog. It barked.';
+const regesp = /The/i;
+console.log(par4.replace('The', 'A'));
+console.log(par4.replace(regesp, 'An'));
+
+console.log(
+    'xxx'.replace('', '_')
+);
+
+/// difference betweeen replace and replaceAll :
+// replace only one first
+// replace all is all 
 
 
 /// /////////////////////////\/
@@ -785,6 +850,8 @@ console.log("2".localeCompare('10', 'en-u-kn-true' ));
 //==     codePointAt()    =//\/
 // ======================////\/
 /////////////////////////////\/
+
+
 
 
 

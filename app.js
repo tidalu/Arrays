@@ -318,3 +318,102 @@ console.log(newArr)
 const string1 = 'Coding is fun!'
 const string2 = string1.split('').reverse().join('')
 console.log(string2)
+
+
+// push method
+
+const arrayyy = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+arrayyy.push(11, 12, 1,21, 23, 34, 45, 23); // if we console log this line it returns the psuhed array length
+console.log(arrayyy);
+
+
+// pop method
+
+arrayyy.pop();
+console.log(arrayyy); // and it also returns the last element(removed)
+
+// unshift
+
+arrayyy.unshift(1, 2, 3, 4, 5, 6, 7);
+console.log(arrayyy);
+
+// shift  method
+
+arrayyy.shift();
+console.log(arrayyy);
+
+// indexOf and lastIndexOf
+
+const nanes = ['jane', 'fred', 'jane', 'jane', 'jim'];
+
+console.log(nanes.indexOf('jane')); 
+//n returns the first occurance of the element // if there is not that element returns -1
+
+console.log(nanes.lastIndexOf('jane'));
+
+
+// EVERY METHOD
+
+// function-->every(value)
+
+const every = [1, 2,3, 4, 5];
+
+const yes =every.every((x) => x > 0 );
+console.log(yes);
+
+
+const  person4 = [
+    {name : 'john', age: 25}, 
+    {name : 'mary', age: 30},
+    {name : 'peter', age: 15}
+
+
+];
+
+const hasName = person4.every((person) => person.name !== undefined);
+
+console.log(hasName);
+
+const arrArr = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+];
+
+const isArr = arrArr.every((arr) => Array.isArray(arr));
+console.log(isArr);
+
+// some method
+
+const res4 = every.some(x => x > 5);
+console.log(res4);
+
+const res6 = person4.some((person) => person.age > 20);
+console.log(res6);
+
+
+// find method
+
+console.log(nanes.find((x) => x = 'jane'));
+console.log(person4.find((person) => person.age > 20));
+
+
+// findIndex method
+
+console.log(nanes.findIndex((x) => x = 'jane'));
+// returns the index of the first occurence
+
+
+// from array method
+
+// new shallow copy
+
+const arr6 = '12345678910';
+
+
+const arr7 = Array.from(arr6, (x) => Number(x));
+arr7.push(1, 2, 3, 4, 5, 6);
+console.log(arr7);
+
+const res2 = Array.from(new Set(arr7));
+console.log(res2);
