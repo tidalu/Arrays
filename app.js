@@ -417,3 +417,26 @@ console.log(arr7);
 
 const res2 = Array.from(new Set(arr7));
 console.log(res2);
+
+
+// isArray method
+
+const Ar = [1, 2, 3, 4, 5];
+const string = '12345';
+const nim = 123;
+console.log(Array.isArray(Ar));
+console.log(Array.isArray(string));
+console.log(Array.isArray(nim));
+
+
+// array flat method
+
+// creates new array 
+
+const flat = [1, 2, [3, 4, [5,[6]]]];
+
+const flatten = flat.flat(Infinity);
+console.log(flatten);
+
+// finished
+
