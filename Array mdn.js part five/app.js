@@ -410,7 +410,7 @@ const pets = ['cat', 'dog', 'fish'];
 console.log(pets.includes('cat'));
 // true
 
-console.log(pets.uncludes('at'));
+console.log(pets.includes('at'));
 // false
 
 
