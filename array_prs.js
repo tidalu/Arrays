@@ -15,6 +15,8 @@ function concat(...arguments) {
      */
     return res // there it is being repetition we should remove it 
   }
+
+  var fn4 = (...arguments) => Array.from(new Set([].concat(...arguments).sort((x, y) => y - x)))
   
   var arr1=[1, 2, 3],
       arr2 = [4,5, 6, 6, 3, 4 ,1, 2], 
