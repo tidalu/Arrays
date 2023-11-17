@@ -96,3 +96,137 @@ function filler(arr, num) {
 }
 
 console.log(filler([3, 4,2 ,5, 1, 7, 4, 6, 8, 9, 10, 4], 5))
+
+//    
+function toString(arg) {
+  return arg.toString();
+}
+
+
+console.log(toString([1, 2, 3, 4])) // somehow if we use this method with matrix, tosTRING METHOD  thinks that whnat we gaev is flattened
+console.log(toString(['a', 'b', 'c']))
+
+function join(args, separate) {
+  return args.join(separate)
+}
+
+console.log(join(["hello", "Mister", "alif"], "TIRE"));
+console.log(join([1, 2, 3, 4, 5], ' '))
+
+function deleted(arr, idx) {
+  delete arr[idx]
+  return arr
+}
+
+
+console.log(deleted([1, 2, 3, 4], 0 ))  // recommended to use this delete, cuz it may be a problem later on when we need the length of the array 
+
+ 
+const sort = (arr) => arr.map(word => word.split('').sort((a, b) => b.localeCompare(a)).join('')).sort((a, b) => b.localeCompare(a));
+
+
+console.log(sort(["alfa", "gamma", "betta"]))
+
+
+
+//    
+function toString(arg) {
+  return arg.toString();
+}
+
+
+console.log(toString([1, 2, 3, 4])) // somehow if we use this method with matrix, tosTRING METHOD  thinks that whnat we gaev is flattened
+console.log(toString(['a', 'b', 'c']))
+
+function join(args, separate) {
+  return args.join(separate)
+}
+
+console.log(join(["hello", "Mister", "alif"], "TIRE"));
+console.log(join([1, 2, 3, 4, 5], ' '))
+
+function deleted(arr, idx) {
+  delete arr[idx]
+  return arr
+}
+
+
+console.log(deleted([1, 2, 3, 4], 0 ))  // recommended to use this delete, cuz it may be a problem later on when we need the length of the array 
+
+ 
+const sorts = (arr) => arr.map(word => word.split('').sort((a, b) => b.localeCompare(a)).join('')).sort((a, b) => b.localeCompare(a));
+
+
+console.log(sorts(["alfa", "gamma", "betta"]))
+
+
+
+function applyEach(arr, cllbck) {
+  var ner = [], 
+      sec  = [];
+  arr.forEach(x => console.log(x))
+  arr.forEach( x => {
+    ner.push(cllbck(x))
+    
+     sec = arr.map(x => cllbck(x-1))
+  }
+             )
+  return [ner, sec]
+}
+
+console.log(applyEach([1, 2, 3, 4], (x) => x*2))
+
+
+console.log((function capitalise(arr) {
+  return arr.map(x => x.charAt(0).toUpperCase() + x.slice(1))
+})(['alfa', 'gamma']));
+
+console.log((function name(arr, cll) {
+  return arr.filter(cll)
+})([1, 2, 3, 4, 5, 6], x => (x/2) % 2 == 0 ))
+
+
+console.log([1, 2, 3, 4, 5].reduce((el, res) => res*el, 1))
+
+function fn(a, b) {
+  return a * b
+}
+
+var fn = (a, b) => a*b
+
+
+var gen = Array.from({length: 100}, (_, i) => i)
+
+console.log(gen)
+
+
+console.log(Array.from(String(1233), x => parseInt(x) % 10))
+
+function ret(arg) {
+  return Array.isArray(arg) ? "yes it si an array" : `no it is ${typeof arg}`
+}
+
+console.log(ret())
+
+console.log((function indexof(arr, num) {
+  return arr.indexOf(num)
+})([1, 2, 3, 4, 5], 4))
+
+
+console.log((function find(arr, cll) {
+  return [arr.find(cll), arr.findIndex(cll)]
+})([1, 2, 43 ,5], x => x > 10))
+
+const arr = [1, 2, 3, 4];
+
+console.log(arr.flatMap((x) => [x, x * 2]));
+
+const arr1 = ["it's Sunny in", "", "California"];
+
+console.log(arr1.map((x) => x.split(" ")));
+console.log(arr1.flatMap((x) => x.split(""))); 
+
+console.log([1, 2, 3, 4, 5, 6].flatMap(x => [[x, x**2]]))
+console.log(["hello", "mister"].flatMap(x => [[x,", it's length is : ", x.length]]))
+
+console.log([...[1,2 ,3, 4, 5, ].keys()])
